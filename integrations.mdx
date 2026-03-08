@@ -1,0 +1,156 @@
+---
+title: Integrations in U17g
+description: Connect U17g with third-party tools to enhance your documentation workflow.
+---
+
+## Overview
+
+U17g supports seamless integrations with popular third-party services. You can connect tools for version control, notifications, content export, and embedding to streamline your documentation processes. These integrations help automate workflows, sync content, and extend functionality without leaving your U17g workspace.
+
+<Callout kind="tip">
+Explore the integrations directory in your U17g dashboard to discover and enable available connections.
+</Callout>
+
+## Supported Integrations
+
+U17g integrates with essential tools across categories like version control, communication, and content management.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="https://github.com">
+    Sync documentation repositories and automate deployments from GitHub.
+  </Card>
+  <Card title="Slack" icon="message-circle" href="https://slack.com">
+    Receive real-time notifications for updates and reviews in your Slack channels.
+  </Card>
+  <Card title="Google Drive" icon="file-text" href="https://drive.google.com">
+    Import and export docs directly from Google Drive folders.
+  </Card>
+</Columns>
+
+| Integration | Category | Key Features |
+|-------------|----------|--------------|
+| GitHub | Version Control | Pull requests, auto-sync, CI/CD |
+| Slack | Notifications | Channel alerts, threaded discussions |
+| Google Drive | Storage | Import/export, collaborative editing |
+| Zapier | Automation | 5000+ app connections |
+
+## Setting Up Webhooks for Notifications
+
+Webhooks enable real-time notifications from U17g to external services. Configure them in your project settings to trigger events like page updates or new comments.
+
+<Steps>
+  <Step title="Navigate to Settings" icon="settings">
+    Go to your project dashboard and select `Integrations` > `Webhooks`.
+  </Step>
+  <Step title="Add Webhook URL" icon="link">
+    Enter your endpoint URL, such as `https://your-webhook-url.com/u17g`.
+  </Step>
+  <Step title="Select Events" icon="zap">
+    Choose events like `page.updated` or `comment.created`.
+  </Step>
+  <Step title="Test and Save" icon="check-circle">
+    Send a test payload and save the configuration.
+  </Step>
+</Steps>
+
+### Webhook Payload Example
+
+U17g sends JSON payloads to your endpoint. Verify your server handles `POST` requests with `Content-Type: application/json`.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Example Node.js handler
+  app.post('/u17g', (req, res) => {
+    const { event, data } = req.body;
+    console.log(`Event: ${event}`, data);
+    res.status(200).json({ received: true });
+  });
+  ```
+  ```python
+  # Example Flask handler
+  from flask import Flask, request, jsonify
+  app = Flask(__name__)
+
+  @app.route('/u17g', methods=['POST'])
+  def webhook():
+      data = request.json
+      event = data.get('event')
+      print(f"Event: {event}", data)
+      return jsonify({'received': True})
+  ```
+</CodeGroup>
+
+<ParamField path="event" param-type="string" required="true">
+  The event type, e.g., `page.updated`.
+</ParamField>
+
+<ParamField body="data" param-type="object" required="true">
+  Payload details including `pageId`, `title`, and `user`.
+</ParamField>
+
+## Exporting Documentation Formats
+
+Export your U17g documentation in multiple formats for sharing or archiving.
+
+<Tabs>
+  <Tab title="PDF" icon="file">
+    Generate print-ready PDFs with custom branding.
+    
+    ```
+    curl -X POST https://api.example.com/v1/export/pdf \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"projectId": "proj_123", "includeImages": true}'
+    ```
+  </Tab>
+  <Tab title="Markdown" icon="file-text">
+    Export as raw Markdown files for GitHub or static sites.
+    
+    ```
+    curl -X POST https://api.example.com/v1/export/md \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"projectId": "proj_123"}'
+    ```
+  </Tab>
+  <Tab title="HTML" icon="code">
+    Get a complete HTML bundle with styles and assets.
+    
+    ```
+    curl -X POST https://api.example.com/v1/export/html \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"projectId": "proj_123", "theme": "dark"}'
+    ```
+  </Tab>
+</Tabs>
+
+## Embedding External Content
+
+Embed content from external sources like Figma prototypes or YouTube videos directly into U17g pages.
+
+<Expandable title="Advanced Embedding Options" default-open="false">
+  Use iframe embeds for interactive content. Ensure the source allows embedding via CORS.
+  
+  ```
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    width="100%"
+    height="400"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+  ```
+</Expandable>
+
+<Callout kind="info">
+  Test embeds in preview mode to confirm they render correctly across devices.
+</Callout>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Dive into full API endpoints for custom integrations.
+  </Card>
+  <Card title="Troubleshooting" icon="help-circle" href="/help-center">
+    Common issues and solutions for integrations.
+  </Card>
+</Columns>

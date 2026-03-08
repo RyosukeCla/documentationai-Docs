@@ -1,0 +1,119 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to U17g.
+---
+
+## Recent Updates
+
+<Callout kind="info" title="Stay Informed">
+Subscribe to our RSS feed or follow us on GitHub to receive notifications about new releases and important changes. Check the tags on each update to quickly find features, bug fixes, or breaking changes.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Added real-time collaboration support for shared documents, enabling multiple users to edit simultaneously.
+- Introduced customizable themes with your brand color `#3B82F6` as the default accent.
+- New API endpoints for bulk operations on projects.
+
+## Improvements
+
+- Enhanced search functionality with fuzzy matching and advanced filters.
+- Optimized performance for large documentation spaces, reducing load times by 40%.
+
+## Bug Fixes
+
+- Fixed issue where embedded images failed to load in certain browsers.
+- Resolved synchronization errors during offline edits.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Integrated version history with diff viewer for tracking changes over time.
+- Added export options to PDF, Markdown, and HTML formats.
+
+## Improvements
+
+- Streamlined the project organization interface with drag-and-drop folders.
+- Better mobile responsiveness for documentation viewing.
+
+## Bug Fixes
+
+- Corrected permission errors when sharing links externally.
+- Fixed keyboard navigation issues in the editor.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core documentation editor with rich text support and markdown preview.
+- Project management dashboard to organize multiple spaces.
+- Basic authentication with API key support.
+
+## Breaking Changes
+
+- Updated configuration format from JSON to YAML for better readability.
+
+## Initial Setup
+
+- First-time user onboarding wizard.
+
+</Update>
+
+## Upcoming Changes
+
+<Columns cols={3}>
+  <Card title="v1.3.0 Preview" icon="zap" href="/changelog#v1-3-0">
+    AI-powered content suggestions and auto-summaries coming soon.
+  </Card>
+  <Card title="Plugin System" icon="puzzle" href="/changelog#plugins">
+    Extend U17g with custom integrations.
+  </Card>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="/changelog#analytics">
+    Track document views and engagement metrics.
+  </Card>
+</Columns>
+
+## How to Stay Updated
+
+Follow these steps to ensure you never miss an update:
+
+<Steps>
+  <Step title="Watch on GitHub" icon="github">
+    Visit the [U17g repository](https://github.com/example/u17g) and click Watch to get release notifications.
+  </Step>
+  <Step title="Enable Notifications" icon="bell">
+    In your GitHub settings, select releases and discussions.
+  </Step>
+  <Step title="RSS Feed" icon="rss">
+    Add `https://github.com/example/u17g/releases.atom` to your feed reader.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="GitHub Releases" icon="github">
+
+    Check the [releases page](https://github.com/example/u17g/releases) for full changelogs and download assets.
+
+  </Tab>
+  <Tab title="Migration Guide" icon="book-open">
+
+    When upgrading, review the migration notes in each release:
+
+    ```
+    # Example migration for v1.2.0
+    npm install u17g@1.2.0
+    ```
+
+  </Tab>
+</Tabs>
+
+<Expandable title="Contribute to U17g" default-open="false">
+  Found a bug or have a feature request? Open an issue on GitHub. Your contributions help improve U17g for everyone.
+</Expandable>
